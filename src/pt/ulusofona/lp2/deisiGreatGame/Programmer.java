@@ -38,8 +38,19 @@ public class Programmer {
     }
 
     public String toString() {                     ///////////////////////
+        StringBuilder str = new StringBuilder();
+        str.append(ID).append(" | ").append(name).append(" | ").append(position).append(" | ");
 
-        return "";
+        for (String language : favLanguages) {
+            str.append(language).append("; ");
+        }
+
+        str.setLength(str.length()-2);
+
+        str.append(" | ").append("Em Jogo");
+
+        return str.toString();
+
     }
 
 }
