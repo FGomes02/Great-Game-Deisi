@@ -25,15 +25,15 @@ public class Programmer {
         this.position = position;
     }
 
-    int getId() {
+    public int getId() {
         return ID;
     }
 
-    String getName() {
+    public String getName() {
         return name;
     }
 
-    ProgrammerColor getColor() {                   /////////////////////
+    public ProgrammerColor getColor() {                   /////////////////////
         return color;
     }
 

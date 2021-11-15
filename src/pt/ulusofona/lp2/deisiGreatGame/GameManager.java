@@ -5,7 +5,7 @@ import java.util.*;
 
 public class GameManager {
 
-    static HashMap<Integer, ArrayList<Programmer>> map = new HashMap<>();
+    static HashMap<Integer, ArrayList<Programmer>> map = new HashMap<Integer, ArrayList<Programmer>>();
     static HashMap<Integer, Programmer> programmers = new HashMap<>();
     static ArrayList<Integer> IDs;
     static int boardSize;
@@ -15,7 +15,7 @@ public class GameManager {
     public GameManager() {}
 
     public boolean createInitialBoard(String[][] playerInfo, int boardSize) {
-        Set<String> availableColors = Set.of("PURPLE", "GREEN", "BROWN", "BLUE");
+        Set<String> availableColors = Set.of("PURPLE", "GREEN", "BROWN", "BLUE", "Purple", "Green", "Brown", "Blue", "purple", "green", "brown", "blue");
         ArrayList<String> usedColor = new ArrayList<>();
         ArrayList<String> usedIDs = new ArrayList<>();
 
@@ -33,8 +33,10 @@ public class GameManager {
         IDs = new ArrayList<>();
 
         for (int i = 1; i <= boardSize; i++) {
-            map.put(i, new ArrayList<Programmer>());              //pode dar erro
+            ArrayList<Programmer> arrayList = new ArrayList<>();
+            map.put(i, arrayList);              //pode dar erro
         }
+
 
         for (String[] programmer : playerInfo) {
 
