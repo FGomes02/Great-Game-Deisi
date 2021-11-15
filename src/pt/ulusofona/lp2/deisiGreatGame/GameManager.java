@@ -124,13 +124,12 @@ public class GameManager {
 
     public ArrayList<Programmer> getProgrammers() {
         //ArrayList<Programmer> programmersAL = new ArrayList<>(programmers.values());
-        ArrayList<Programmer> ALProgramming = new ArrayList<>();
 
-        for (ArrayList<Programmer> array : map.values()) {
+        /*for (ArrayList<Programmer> array : map.values()) {
             ALProgramming.addAll(array);
-        }
+        }*/
 
-        return ALProgramming;
+        return new ArrayList<>(programmers.values());
         //return new ArrayList<>(programmers.values());
     }
 
