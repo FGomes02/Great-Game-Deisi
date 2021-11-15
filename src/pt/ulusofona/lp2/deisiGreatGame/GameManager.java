@@ -75,8 +75,8 @@ public class GameManager {
 
             String[] splitLanguages = programmer[2].split(";");
 
-            map.get(1).add(new Programmer(id, programmer[1], new ArrayList<>(Arrays.asList(splitLanguages)), stringToColor(programmer[3]), 0));
-            programmers.put(id, new Programmer(id, programmer[1], new ArrayList<>(Arrays.asList(splitLanguages)), stringToColor(programmer[3]), 0));
+            map.get(1).add(new Programmer(id, programmer[1], new ArrayList<>(Arrays.asList(splitLanguages)), stringToColor(programmer[3])));
+            programmers.put(id, new Programmer(id, programmer[1], new ArrayList<>(Arrays.asList(splitLanguages)), stringToColor(programmer[3])));
             IDs.add(id);
         }
 
@@ -147,7 +147,7 @@ public class GameManager {
     }
 
     public boolean moveCurrentPlayer(int nrPositions) {
-        if (nrPositions < 1 || nrPositions > 6) {
+        if (nrPositions < 1 || nrPositions > 6 || map.isEmpty()) {
             return false;
         }
 
@@ -186,13 +186,13 @@ public class GameManager {
     }
 
     public ProgrammerColor stringToColor(String color) {
-        if (color.equals("PURPLE")) {
+        if (color.equals("PURPLE") || color.equals("Purple") || color.equals("purple")) {
             return ProgrammerColor.PURPLE;
-        } else if (color.equals("GREEN")) {
+        } else if (color.equals("GREEN") || color.equals("Green") || color.equals("green")) {
             return ProgrammerColor.GREEN;
-        } else if (color.equals("Brown")) {
+        } else if (color.equals("BROWN") || color.equals("Brown") || color.equals("brown")) {
             return ProgrammerColor.BROWN;
-        }else if (color.equals(("BLUE"))); {
+        }else if (color.equals("BLUE") || color.equals("Blue") || color.equals("blue")); {
             return ProgrammerColor.BLUE;
         }
 
