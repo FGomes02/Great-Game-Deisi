@@ -155,7 +155,7 @@ public class GameManager {
             int goBack = currentPosition + nrPositions - boardSize;
 
             programmers.get(turn).position = boardSize - goBack;
-            map.get(currentPosition).removeIf(programmer -> programmer.getID() == turn);
+            map.get(currentPosition).removeIf(programmer -> programmer.getId() == turn);
             map.get(boardSize - goBack).add(programmers.get(turn));
 
         } else {
@@ -183,15 +183,15 @@ public class GameManager {
         return new JPanel();
     }
 
-    public Programmer.ProgrammerColor stringToColor(String color) {
+    public ProgrammerColor stringToColor(String color) {
         if (color.equals("PURPLE")) {
-            return Programmer.ProgrammerColor.PURPLE;
+            return ProgrammerColor.PURPLE;
         } else if (color.equals("GREEN")) {
-            return Programmer.ProgrammerColor.GREEN;
+            return ProgrammerColor.GREEN;
         } else if (color.equals("Brown")) {
-            return Programmer.ProgrammerColor.BROWN;
+            return ProgrammerColor.BROWN;
         }else if (color.equals(("BLUE"))); {
-            return Programmer.ProgrammerColor.BLUE;
+            return ProgrammerColor.BLUE;
         }
 
     }

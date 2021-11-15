@@ -2,14 +2,14 @@ package pt.ulusofona.lp2.deisiGreatGame;
 
 import java.util.ArrayList;
 
-public class Programmer {
+enum ProgrammerColor {
+    PURPLE,
+    BLUE,
+    GREEN,
+    BROWN;
+}
 
-    public enum ProgrammerColor {
-        PURPLE,
-        BLUE,
-        GREEN,
-        BROWN;
-    }
+public class Programmer {
 
     String name;
     ArrayList<String> favLanguages;
@@ -25,7 +25,7 @@ public class Programmer {
         this.position = position;
     }
 
-    int getID() {
+    int getId() {
         return ID;
     }
 
