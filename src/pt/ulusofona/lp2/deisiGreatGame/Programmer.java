@@ -15,12 +15,12 @@ public class Programmer {
 
     String name;
     ArrayList<String> favLanguages;
-    int ID;
+    int id;
     ProgrammerColor color;
     int position;
 
-    public Programmer(int ID, String name, ArrayList<String> favLanguages, ProgrammerColor color) {
-        this.ID = ID;
+    public Programmer(int id, String name, ArrayList<String> favLanguages, ProgrammerColor color) {
+        this.id = id;
         this.name = name;
         this.favLanguages = favLanguages;
         this.color = color;
@@ -28,7 +28,7 @@ public class Programmer {
     }
 
     public int getId() {
-        return ID;
+        return id;
     }
 
     public String getName() {
@@ -44,7 +44,7 @@ public class Programmer {
         Collections.sort(sortedLanguages);
 
         StringBuilder str = new StringBuilder();
-        str.append(ID).append(" | ").append(name).append(" | ").append(position).append(" | ");
+        str.append(id).append(" | ").append(name).append(" | ").append(position).append(" | ");
 
         for (String language : sortedLanguages) {
             str.append(language).append("; ");

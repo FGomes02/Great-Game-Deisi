@@ -18,6 +18,7 @@ public class GameManager {
         Set<String> availableColors = Set.of("PURPLE", "GREEN", "BROWN", "BLUE", "Purple", "Green", "Brown", "Blue", "purple", "green", "brown", "blue");
         ArrayList<String> usedColor = new ArrayList<>();
         ArrayList<String> usedIDs = new ArrayList<>();
+        GameManager.boardSize = boardSize;
 
         //Checks if array is null or if player count is outside of limit.
         if (playerInfo == null || playerInfo.length > 4 || playerInfo.length < 2) {
@@ -101,13 +102,13 @@ public class GameManager {
             return "blank.png";
         } else {
             for (Programmer programmer : map.get(position)) {
-                if (programmer.color.name().equals("PURPLE")) {
+                if (programmer.color.name().equals("Purple")) {
                     return "playerPurple.png";
-                } else if (programmer.color.name().equals("GREEN")) {
+                } else if (programmer.color.name().equals("Green")) {
                     return "playerGreen.png";
-                } else if (programmer.color.name().equals("BROWN")) {
+                } else if (programmer.color.name().equals("Brown")) {
                     return "playerBrown.png";
-                } else if (programmer.color.name().equals("BLUE")) {
+                } else if (programmer.color.name().equals("Blue")) {
                     return "playerBlue.png";
                 }
             }
@@ -155,14 +156,19 @@ public class GameManager {
 
         if (currentPosition + nrPositions > boardSize) {
             int goBack = currentPosition + nrPositions - boardSize;
+            int targetPosition = boardSize - goBack;
+
+            if (!map.containsKey(targetPosition)) {
+                return false;
+            }
 
             programmers.get(turn).position = boardSize - goBack;
             map.get(currentPosition).removeIf(programmer -> programmer.getId() == turn);
-            map.get(boardSize - goBack).add(programmers.get(turn));
+            map.get(targetPosition).add(programmers.get(turn));
 
         } else {
             programmers.get(turn).position = currentPosition + nrPositions;
-            map.get(currentPosition).removeIf(programmer -> programmer.ID == turn);
+            map.get(currentPosition).removeIf(programmer -> programmer.getId() == turn);
             map.get(currentPosition + nrPositions).add(programmers.get(turn));
         }
 
@@ -172,6 +178,10 @@ public class GameManager {
     }
 
     public boolean gameIsOver() {
+        if (map.get(boardSize) == null) {
+            return false;
+        }
+
         return !map.get(boardSize).isEmpty();
     }
 
@@ -182,7 +192,7 @@ public class GameManager {
 
     public JPanel getAuthorsPanel() {                   ///////////////
 
-        return new JPanel();
+        return null;
     }
 
     public ProgrammerColor stringToColor(String color) {
