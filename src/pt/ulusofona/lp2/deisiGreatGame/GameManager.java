@@ -12,6 +12,7 @@ public class GameManager {
     static int turn;
     static int numOfPlayers;
     static int turnCount;
+    static int globalCount;
 
 
     public GameManager() {}
@@ -35,6 +36,7 @@ public class GameManager {
 
         IDs = new ArrayList<>();
         numOfPlayers = playerInfo.length;
+        globalCount = 1;
 
         for (int i = 1; i <= boardSize; i++) {
             ArrayList<Programmer> arrayList = new ArrayList<>();
@@ -182,7 +184,7 @@ public class GameManager {
             turn = IDs.get(turnCount + 1);
             turnCount++;
         }
-
+        globalCount++;
         return true;
     }
 
@@ -195,11 +197,38 @@ public class GameManager {
     }
 
     public ArrayList<String> getGameResults() {           ///////////////
+        ArrayList<String> result = new ArrayList<>();
+        ArrayList<Programmer> restantes = new ArrayList<>();
+        HashMap<Integer, Programmer> hashMapToSort = new HashMap<>();
 
-        return new ArrayList<>();
+        result.add("O GRANDE JOGO DO DEISI");
+        result.add("\n");
+        result.add("NR. DE TURNOS");
+        result.add(Integer.toString(globalCount));
+        result.add("\n");
+        result.add("VENCEDOR");
+        result.add(programmers.get(turn).name);
+        result.add("\n");
+        result.add("RESTANTES");
+
+        for (Programmer programmer : programmers.values()) {
+            hashMapToSort.put(programmer.position, programmer);
+        }
+
+        for (int i = boardSize; i >= 1; i++) {
+            if (hashMapToSort.containsKey(i)) {
+                restantes.add(hashMapToSort.get(i));
+            }
+        }
+
+        for (Programmer programmer : restantes) {
+            result.add(programmer.name + " " + programmer.position);
+        }
+
+        return result;
     }
 
-    public JPanel getAuthorsPanel() {                   ///////////////
+    public JPanel getAuthorsPanel() {                    ///////////////
 
         return null;
     }
@@ -211,7 +240,7 @@ public class GameManager {
             return ProgrammerColor.GREEN;
         } else if (color.equals("BROWN") || color.equals("Brown") || color.equals("brown")) {
             return ProgrammerColor.BROWN;
-        }else if (color.equals("BLUE") || color.equals("Blue") || color.equals("blue")); {
+        } else if (color.equals("BLUE") || color.equals("Blue") || color.equals("blue")); {
             return ProgrammerColor.BLUE;
         }
 
