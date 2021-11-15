@@ -10,6 +10,8 @@ public class GameManager {
     static ArrayList<Integer> IDs;
     static int boardSize;
     static int turn;
+    static int numOfPlayers;
+    static int turnCount;
 
 
     public GameManager() {}
@@ -32,6 +34,7 @@ public class GameManager {
         }
 
         IDs = new ArrayList<>();
+        numOfPlayers = playerInfo.length;
 
         for (int i = 1; i <= boardSize; i++) {
             ArrayList<Programmer> arrayList = new ArrayList<>();
@@ -172,7 +175,13 @@ public class GameManager {
             map.get(currentPosition + nrPositions).add(programmers.get(turn));
         }
 
-
+        if (turnCount == numOfPlayers - 1) {
+            turn = IDs.get(0);
+            turnCount = 0;
+        } else {
+            turn = IDs.get(turnCount + 1);
+            turnCount++;
+        }
 
         return true;
     }
